@@ -17,11 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Test", "domain\Store.Test\Store.Test.csproj", "{F05ECD60-3221-4D10-8E24-D752C8C0EC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web.Contractors", "presentation\Store.Web.Contractors\Store.Web.Contractors.csproj", "{C7570594-3620-4266-96F3-BE87F96EE826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web.Contractors", "presentation\Store.Web.Contractors\Store.Web.Contractors.csproj", "{C7570594-3620-4266-96F3-BE87F96EE826}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{EDD8E95D-307C-4D6F-BB0B-9B04AC73B577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.OshadBank", "plugins\Store.OshadBank\Store.OshadBank.csproj", "{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.OshadBank", "plugins\Store.OshadBank\Store.OshadBank.csproj", "{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{4EDC8574-0EEF-4A2C-8401-F4992C40861C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web.App", "application\Store.Web.App\Store.Web.App.csproj", "{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{F05ECD60-3221-4D10-8E24-D752C8C0EC72} = {22560461-0A27-4089-9D9C-5B3E91FFA570}
 		{C7570594-3620-4266-96F3-BE87F96EE826} = {EFDF680E-A081-47D8-AFE6-73B80F6A8182}
 		{AF72F263-B2D9-4E1B-99F5-432B3A25EBBB} = {EDD8E95D-307C-4D6F-BB0B-9B04AC73B577}
+		{A4900A2E-3DBA-47D5-9D1E-16A505C25AE5} = {4EDC8574-0EEF-4A2C-8401-F4992C40861C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BAF1FDA-035C-41B3-9C90-916CFFAF4C62}

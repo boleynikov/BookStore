@@ -15,7 +15,7 @@ namespace Store.Test
             Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
                 int count = 0;
-                new OrderItem(1, count, 1m);
+                new OrderItem(1, 1m, count);
             });
         }
         [Fact]
@@ -24,13 +24,13 @@ namespace Store.Test
             Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
                 int count = -1;
-                new OrderItem(1, count, 1m);
+                new OrderItem(1, 1m, count);
             });
         }
         [Fact]
         public void OrderItem_WithPositiveCount_SetsCount()
         {
-            var orderItem = new OrderItem(1, 2, 3m);
+            var orderItem = new OrderItem(1, 3m, 2);
             Assert.Equal(1, orderItem.BookId);
             Assert.Equal(2, orderItem.Count);
             Assert.Equal(3m, orderItem.Price);
@@ -38,7 +38,7 @@ namespace Store.Test
         [Fact]
         public void Count_WithNegativeValue_ThrowsArgumentOutOfRange()
         {
-            var orderItem = new OrderItem(0, 5, 0m);
+            var orderItem = new OrderItem(0, 0m, 5);
 
             Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
@@ -48,7 +48,7 @@ namespace Store.Test
         [Fact]
         public void Count_WithZeroValue_ThrowsArgumentOutOfRange()
         {
-            var orderItem = new OrderItem(0, 5, 0m);
+            var orderItem = new OrderItem(0, 0m, 5);
 
             Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
@@ -58,7 +58,7 @@ namespace Store.Test
         [Fact]
         public void Count_WithPositiveValue_SetsValue()
         {
-            var orderItem = new OrderItem(0, 5, 0m);
+            var orderItem = new OrderItem(0, 0m, 5);
 
             orderItem.Count = 10;
             Assert.Equal(10, orderItem.Count);
