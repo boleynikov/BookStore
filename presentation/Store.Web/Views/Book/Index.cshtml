@@ -1,4 +1,4 @@
-﻿@model Book
+﻿@model Store.Web.App.BookModel
 
 @{
     ViewData["Title"] = Model.Title;
@@ -8,7 +8,7 @@
 <p><strong>@Model.Author</strong></p>
 <p>@Model.Description</p>
 <p>Ціна <strong>@Model.Price</strong> грн</p>
-<form action="@Url.Action("AddItem","Order")" method="post">
+<form action="@Url.Action(nameof(OrderController.AddItem),"Order")" method="post">
     <input type="hidden" name="bookId" value="@Model.Id" />
     <button class="btn btn-outline-danger" type="submit">До кошика</button>
 </form>

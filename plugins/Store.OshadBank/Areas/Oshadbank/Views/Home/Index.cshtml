@@ -1,9 +1,18 @@
-﻿@{
+﻿@using Store.OshadBank.Areas.Oshadbank.Controllers
+@using Store.OshadBank.Areas.Oshadbank.Models
+@model ExampleModel
+@{
     ViewData["Ttle"] = "Ощадбанк";
 }
 
 <h1>Ощадбанк</h1>
 
 <p>
-    <a href="/Oshadbank/Home/Callback">Оплатити</a>
+   Тут йде емуляція переходу на сторонній сервіс для оплати.
 </p>
+
+<form action="@Url.Action(nameof(HomeController.Callback), "Home", new { area = "Oshadbank" })" method="post">
+    <input type="hidden" name="orderId" value="@Model.OrderId" />
+    <input type="hidden" name="returnUri" value="@Model.ReturnUri" />
+    <button type="submit" class="btn btn-success">Оплатити</button>
+</form>

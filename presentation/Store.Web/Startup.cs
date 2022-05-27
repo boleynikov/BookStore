@@ -8,6 +8,7 @@ using Store.Contractors;
 using Store.Memory;
 using Store.Messages;
 using Store.OshadBank;
+using Store.Web.App;
 using Store.Web.Contractors;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace Store.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -44,6 +46,7 @@ namespace Store.Web
             services.AddSingleton<IPaymentService, OshadbankPaymentService>();
             services.AddSingleton<IWebContractorService, OshadbankPaymentService>();
             services.AddSingleton<BookService>();
+            services.AddSingleton<OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,13 +74,14 @@ namespace Store.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapAreaControllerRoute(
-                    name: "Oshadbank",
-                    areaName: "Oshadbank",
-                    pattern: "Oshadbank/{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }
