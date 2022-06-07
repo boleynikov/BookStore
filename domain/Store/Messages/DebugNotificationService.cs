@@ -30,7 +30,7 @@ namespace Store.Messages
                 }
 
                 message.Body = builder.ToString();
-                client.Send(message);
+                //client.Send(message);
             }
         }
     }
