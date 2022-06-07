@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Contractors
 {
@@ -44,7 +41,7 @@ namespace Store.Contractors
         {
             return Form.CreateFirst(Name)
                        .AddParameter("orderId", order.Id.ToString())
-                       .AddField(new SelectionField("Город", "city", "1", cities));
+                       .AddField(new SelectionField("Місто", "city", "1", cities));
         }
 
         public Form NextForm(int step, IReadOnlyDictionary<string, string> values)
@@ -54,12 +51,12 @@ namespace Store.Contractors
                 if (values["city"] == "1")
                 {
                     return Form.CreateNext(Name, 2, values)
-                               .AddField(new SelectionField("Постамат", "postamate", "1", postamates["1"]));
+                               .AddField(new SelectionField("Поштомат", "postamate", "1", postamates["1"]));
                 }
                 else if (values["city"] == "2")
                 {
                     return Form.CreateNext(Name, 2, values)
-                               .AddField(new SelectionField("Постамат", "postamate", "4", postamates["2"]));
+                               .AddField(new SelectionField("Поштомат", "postamate", "4", postamates["2"]));
                 }
                 else
                     throw new InvalidOperationException("Invalid postamate city.");
@@ -90,7 +87,7 @@ namespace Store.Contractors
                 { nameof(postamateName), postamateName },
             };
 
-            var description = $"Город: {cityName}\nПостамат: {postamateName}";
+            var description = $"Місто: {cityName}\nПоштомат: {postamateName}";
 
             return new OrderDelivery(Name, description, 150m, parameters);
         }

@@ -28,7 +28,7 @@ namespace Store.Contractors
             if (form.ServiceName != Name || !form.IsFinal)
                 throw new InvalidOperationException("Invalid payment form.");
 
-            return new OrderPayment(Name, "Оплата наличными", form.Parameters);
+            return new OrderPayment(Name, "Оплата готівкою", form.Parameters);
         }
     }
 }
