@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Інтернет-магазин книг</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.css" />*@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -13,14 +14,14 @@
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Інтернет-магазин книг</a>    
             <form class="form-inline my-2 my-lg-0" action="@Url.Action("Index", "Search")">
                 <input class="form-control mr-sm-2" type="search" name="query" placeholder="Автор чи назва книги" />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Пошук</button>
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Пошук</button>
             </form>
             <span class="navbar-text ml-auto">
                 @{ 
                     
                     if(Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
                     {
-                                <a href="@Url.Action("Index", "Order")"> Товаров @cart.TotalCount на суму @cart.TotalPrice</a>
+                                <a href="@Url.Action("Index", "Order")"> Товаров @cart.TotalCount на суму @Math.Round(cart.TotalPrice, 2)</a>
                     }
                     else
                     {
@@ -35,7 +36,11 @@
             @RenderBody()
         </main>
     </div>
-
+    <footer>
+        <div class="mt-4 border">
+            <h5 class="text-left p-4">Є-Книга 2022 Всі права захищені</h5>
+        </div>
+    </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

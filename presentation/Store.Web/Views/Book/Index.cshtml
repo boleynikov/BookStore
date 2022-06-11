@@ -1,14 +1,50 @@
-﻿@model Store.Web.App.BookModel
+﻿@model (Store.Web.App.BookModel, IReadOnlyCollection<BookModel>)
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Item1.Title;
 }
 
-<h1>@Model.Title</h1>
-<p><strong>@Model.Author</strong></p>
-<p>@Model.Description</p>
-<p>Ціна <strong>@Model.Price</strong> грн</p>
-<form action="@Url.Action(nameof(OrderController.AddItem),"Order")" method="post">
-    <input type="hidden" name="bookId" value="@Model.Id" />
-    <button class="btn btn-outline-danger" type="submit">До кошика</button>
-</form>
+<div class="card mt-4">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.Item1.Image" class="img-fluid rounded-start" alt="..." height="800" width="600">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Item1.Author</h5>
+                <h3>@Model.Item1.Title</h3>
+                <h5 class="card-subtitle">@Math.Round(Model.Item1.Price, 2) Грн</h5>
+                <p class="card-text">@Model.Item1.Description</p>
+                <form action="@Url.Action(nameof(OrderController.AddItem), "Order")" method="post">
+                    <input type="hidden" name="bookId" value="@Model.Item1.Id" />
+                    <button class="btn btn-outline-danger" type="submit">До кошика</button>
+                </form>
+                <div>
+                    <p class="card-text"><small class="text-muted">Є в наявності</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h1 class="text-center m-4">Вас також можуть зацікавити<br /></h1>
+</div>
+<div class="card-group">
+    @{
+        int count = 0;
+        foreach (var book in Model.Item2)
+        {
+            count++;
+            if (count == 4) break;
+        <div class="card mx-3" onclick="location.href = '@Url.Action("Index", "Book", new { id = book.Id })';">
+            <img src="@book.Image" class="card-img-top" alt="..." height="400" width="50">
+            <div class="card-body">
+                <h6 class="card-subtitle">@book.Author</h6>
+                <h5 class="card-title">@book.Title</h5>
+                <p class="card-text text-truncate">@book.Description</p>
+                <p class="card-text"><small class="text-muted">Є в наявності</small></p>
+            </div>
+        </div>
+    }
+        }
+</div>

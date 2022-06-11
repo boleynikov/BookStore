@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.Web.App;
+using System;
+using System.Linq;
 
 namespace Store.Web.Controllers
 {
@@ -14,7 +16,9 @@ namespace Store.Web.Controllers
         public IActionResult Index(int id)
         {
             BookModel model = bookService.GetById(id);
-            return View(model);
+            var alsoBooks = bookService.GetRandom(id);
+            var tuple = (model, alsoBooks);
+            return View(tuple);
         }
     }
 }

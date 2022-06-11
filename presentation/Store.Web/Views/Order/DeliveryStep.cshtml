@@ -21,13 +21,21 @@
             <div class="form-group">
                 <label for="values[@field.Name]">@field.Label</label>
                 <select class="form-control" name="values[@field.Name]">
-                 @foreach (var item in selectionField.Items)
-                 {
-                     <option value="@item.Key">@item.Value</option>
-                 }
+                    @foreach (var item in selectionField.Items)
+                    {
+                        <option value="@item.Key">@item.Value</option>
+                    }
                 </select>
             </div>
         }
     }
     <button type="submit" class="btn btn-success">Далі</button>
 </form>
+@{
+    for (int i = 0; i < 5; i++)
+    {
+        <div>
+            <h1 class="text-center mt-5"><br /></h1>
+        </div>
+    }
+}
