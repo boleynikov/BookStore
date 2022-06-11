@@ -21,7 +21,20 @@ namespace Store.Web.App
             return books.Select(Map)
                          .ToArray();
         }
+        public IReadOnlyCollection<BookModel> GetAll()
+        {
+            var books = bookRepository.GetAll();
 
+            return books.Select(Map)
+                        .ToArray();
+        }
+        public IReadOnlyCollection<BookModel> GetRandom(int index)
+        {
+            var books = bookRepository.GetRandom(index);
+
+            return books.Select(Map)
+                        .ToArray();
+        }
         public BookModel GetById(int id)
         {
             var book = bookRepository.GetById(id);
@@ -34,6 +47,7 @@ namespace Store.Web.App
             {
                 Id = book.Id,
                 Isbn = book.Isbn,
+                Image = book.Image,
                 Title = book.Title,
                 Author = book.Author,
                 Description = book.Description,

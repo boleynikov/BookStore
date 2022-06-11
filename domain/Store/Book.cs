@@ -34,6 +34,16 @@ namespace Store
                 dto.Title = value.Trim();
             }
         }
+        public string Image
+        {
+            get => dto.Image;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException(nameof(Image));
+                dto.Image = value;
+            }
+        }
         public string Description
         {
             get => dto.Description;
@@ -71,6 +81,7 @@ namespace Store
         {
             public static BookDto Create(string isbn, 
                                          string author, 
+                                         string image,
                                          string title,
                                          string description,
                                          decimal price)
@@ -85,6 +96,7 @@ namespace Store
                 {
                     Isbn = isbn,
                     Author = author?.Trim(),
+                    Image = image,
                     Title = title.Trim(),
                     Description = description?.Trim(),
                     Price = price

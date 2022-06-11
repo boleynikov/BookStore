@@ -53,7 +53,15 @@ namespace Store.Data.EF
                             .Select(Book.Mapper.Map)
                             .ToArray();
         }
+        public Book[] GetAll()
+        {
+            var dbContext = dbContextFactory.Create(typeof(BookRepository));
 
+            return dbContext.Books
+                            .AsEnumerable()
+                            .Select(Book.Mapper.Map)
+                            .ToArray();
+        }
         public Book GetById(int id)
         {
             var dbContext = dbContextFactory.Create(typeof(BookRepository));
@@ -62,6 +70,17 @@ namespace Store.Data.EF
                                .Single(book => book.Id == id);
 
             return Book.Mapper.Map(dto);
+        }
+
+        public Book[] GetRandom(int indexThatMustntBe)
+        {
+            var dbContext = dbContextFactory.Create(typeof(BookRepository));
+
+            return dbContext.Books
+                            .AsEnumerable()
+                            .Where(book => book.Id != indexThatMustntBe)
+                            .Select(Book.Mapper.Map)
+                            .ToArray();
         }
     }
 }
